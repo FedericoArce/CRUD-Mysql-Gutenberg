@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('./partials/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/header') %>
+    </header>
+    <form class="create-form" action="/user/create" enctype="multipart/form-data" method="POST">
+        <h2>Registro de Usuario</h2>
+
+        <div>
+            <br>
+            <label>Nombres</label>
+            <input type="text" name="nombres" id="nombres">
+            <br>
+            <% if(locals.errors && locals.errors.nombres){ %>
+                <span style="color: red">
+                    <%= errors.nombres.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label>Apellidos</label>
+            <input type="text" name="apellidos" id="apellidos">
+            <br>
+            <% if(locals.errors && locals.errors.apellidos){ %>
+                <span style="color: red">
+                    <%= errors.apellidos.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label>Email</label>
+            <input type="email" name="email" id="email">
+            <br>
+            <% if(locals.errors && locals.errors.email){ %>
+                <span style="color: red">
+                    <%= errors.email.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label>Password</label>
+            <input type="password" name="password" id="password">
+            <br>
+            <% if(locals.errors && locals.errors.password){ %>
+                <span style="color: red">
+                    <%= errors.password.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label for="categoria" class="form-label"> Perfil:</label>
+            <select name="categoria" id="categoria" class="form-input">
+                <option value="">Elegí</option>
+                <option type="radio" value="publicar libros" required>Publicar Libros</option>
+                <option type="radio" value="leer libros" required>leer Libros</option>
+                <br>
+                <% if(locals.errors && locals.errors.categoria){ %>
+                    <span style="color: red">
+                        <%= errors.categoria.msg %>
+                    </span>
+                    <% } %>
+            </select>
+        </div>
+
+        <div>
+            <br>
+            <label for="img" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="img" name="img">
+        </div>
+
+        <div>
+            <br>
+            <label for="novedades" class="form-label">Recibir Novedades:</label>
+            <select name="novedades" id="novedades" class="form-input">
+                <option value="">Elegí</option>
+                <option type="radio" value="si" required>Si</option>
+                <option type="radio" value="no" required>No</option>
+            </select>
+            <% if(locals.errors && locals.errors.novedades){ %>
+                <span style="color: red">
+                    <%= errors.novedades.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label>Fecha de Creacion</label>
+            <input type="date" name="fechaCreacion" id="fechaCreacion">
+            <br>
+            <% if(locals.errors && locals.errors.fechaCreacion){ %>
+                <span style="color: red">
+                    <%= errors.fechaCreacion.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <label for="administrador" class="form-label">Es Administrador:</label>
+            <select name="administrador" id="administrador" class="form-input">
+                <option value="">Elegí</option>
+                <option type="radio" value="si" required>Si</option>
+                <option type="radio" value="no" required>No</option>
+            </select>
+            <% if(locals.errors && locals.errors.administrador){ %>
+                <span style="color: red">
+                    <%= errors.administrador.msg %>
+                </span>
+                <% } %>
+        </div>
+
+        <div>
+            <br>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+</body>
